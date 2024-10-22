@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseURI = 'http://localhost:8080/api/v1';
 
+
 export const apiSlice = createApi({
+
 
     baseQuery : fetchBaseQuery({ baseUrl : baseURI}),
     endpoints : builder => ({
@@ -15,12 +17,13 @@ export const apiSlice = createApi({
                     'Authorization': `Bearer ${localStorage.getItem('token')}`, // Attach token here
                 }
             }),
-            providesTags: ['Expenses'],
+            providesTags: ['expenses'],
         }),
 
 
         getSalaries: builder.query({
             query: () => ({
+                
                 url: `/salaries`,
                 credentials: 'include',
                 headers: {
@@ -28,6 +31,7 @@ export const apiSlice = createApi({
                 }
             }),
             providesTags: ['salaries'],
+            
         }),
 
         addMonth: builder.mutation({
@@ -60,7 +64,7 @@ export const apiSlice = createApi({
                 method: "POST",
                 body: initialTransaction
             }),
-            invalidatesTags: ['months']  // Invalidate the 'months' tag so the history (getMonths) refetches
+            invalidatesTags: ['expenses']  // Invalidate the 'months' tag so the history (getMonths) refetches
         }),
         
         
@@ -75,7 +79,7 @@ export const apiSlice = createApi({
                 method: "DELETE",
                 body: { id: recordId },  // Include the recordId in the body
             }),
-            invalidatesTags: ['Expenses']  // Invalidate cache so the transactions will be refetched
+            invalidatesTags: ['expenses']  // Invalidate cache so the transactions will be refetched
         }),
 
         deleteSalary: builder.mutation({

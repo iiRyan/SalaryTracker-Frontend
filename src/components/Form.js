@@ -34,11 +34,17 @@ export default function Form() {
             />
           </div>
 
-          <select className="w-full px-4 py-2 bg-[#3A3B3C] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow" {...register('category')}>
-            <option value="needs" defaultValue>Needs</option>
-            <option value="wants">Wants</option>
-            <option value="savings">Savings</option>
-          </select>
+          <select 
+  className="w-full px-4 py-2 bg-[#3A3B3C] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow"
+  {...register('category')}
+  defaultValue="needs"  // Set a default value here
+>
+  <option value="" disabled>Select Category</option>  // Placeholder option
+  <option value="needs">Needs</option>
+  <option value="wants">Wants</option>
+  <option value="savings">Savings</option>
+</select>
+
 
           <div className="input-group">
             <input 

@@ -25,8 +25,14 @@ console.log(amount); // Use the amount as needed
   let totalExpenses = 0;
 
  
+  const Loader = () => (
+    <div className="flex justify-center items-center min-h-screen bg-customBlack">
+      <div className="loader"></div>
+    </div>
+  );
+
   if (isFetching) {
-    return <div>Fetching...</div>;
+    return <Loader />;
   }
   if (isError) {
     return <div>Error loading data.</div>;

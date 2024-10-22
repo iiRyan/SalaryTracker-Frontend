@@ -9,6 +9,7 @@ import Months from './components/Months';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';  // Add the ProtectedRoute component
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/create' element={<ProtectedRoute component={Create} />} />
         <Route path='/read/:month' element={<ProtectedRoute component={Read} />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

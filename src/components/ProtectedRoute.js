@@ -6,14 +6,14 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 
   const validateToken = async () => {
     const token = localStorage.getItem("token");
-    console.log("token " + token)
     const response = await fetch("http://localhost:8080/api/v1/auth/validate", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    if (response.status === 401) {
+   
+    if (response.status === 401 || response.status === 400) {
+        localStorage.removeItem('token');
         return <Navigate to="/login" replace />;
     }
   };
